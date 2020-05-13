@@ -6,6 +6,7 @@ for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 done;
 unset file;
 
+export QT_QPA_PLATFORMTHEME="qt5ct"
 # Autocorrect typos in path names when using `cd`
 shopt -s cdspell;
 
