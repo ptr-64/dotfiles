@@ -24,8 +24,6 @@ runtime! archlinux.vim
 
 " highlight searches
 :set hls is
-" Change color scheme
-colorscheme nord
 "nnoremap <F3> :set hlsearch!<CR>
 
 " close parenthesis/ brackets etc automatically
@@ -90,3 +88,5 @@ let g:vimtex_view_method = 'zathura'
 " Initialize plugin system
 call plug#end()
 
+" Change color scheme
+colorscheme nord
