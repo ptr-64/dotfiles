@@ -85,6 +85,8 @@ Plug 'vim-pandoc/vim-rmarkdown'
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
 
+" Add julia support
+Plug 'JuliaEditorSupport/julia-vim'
 " Initialize plugin system
 call plug#end()
 

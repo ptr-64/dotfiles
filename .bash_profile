@@ -12,6 +12,3 @@ shopt -s cdspell;
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
-
-# Add Julia's bin to the system PATH environment variable
-export PATH="$PATH:/home/iyer/julia-1.4.0/bin"
