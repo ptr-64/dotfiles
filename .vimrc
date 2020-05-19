@@ -1,5 +1,3 @@
-
- 
 " All system-wide defaults are set in $VIMRUNTIME/archlinux.vim (usually just
 " /usr/share/vim/vimfiles/archlinux.vim) and sourced by the call to :runtime
 " you can find below.  If you wish to change any of those settings, you should
@@ -34,6 +32,11 @@ inoremap " ""<left>
 " inoremap { {}<left>
 " inoremap {<CR> {<CR>}<ESC>O
 " inoremap {;<CR> {<CR>};<ESC>O
+
+" Use the statusline
+set laststatus=2
+set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%m%r%=%c,%l/%L\ %P
+
 
 " VIM-PLUG
 " do not load defaults if ~/.vimrc is missing
