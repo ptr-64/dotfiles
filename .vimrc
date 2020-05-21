@@ -16,6 +16,8 @@ runtime! archlinux.vim
 
 "--------------------------------------------------------------
 
+" Tuen mouse on
+:set mouse=n
 
 " hybrid numbering
 :set number relativenumber
@@ -25,7 +27,6 @@ runtime! archlinux.vim
 "nnoremap <F3> :set hlsearch!<CR>
 
 " close parenthesis/ brackets etc automatically
-inoremap " ""<left>
 " inoremap ' ''<left>
 " inoremap ( ()<left>
 " inoremap [ []<left>
@@ -35,8 +36,17 @@ inoremap " ""<left>
 
 " Use the statusline
 set laststatus=2
-set statusline=%t[%{strlen(&fenc)?&fenc:'none'},%{&ff}]%m%r%=%c,%l/%L\ %P
-
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+" set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+"set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
 
 " VIM-PLUG
 " do not load defaults if ~/.vimrc is missing

@@ -13,32 +13,24 @@ def math():
 		return False
 endglobal
 
-context "math()"
-snippet // "Fraction" iA
-\\frac{$1}{$2}$0
-endsnippet
+# context "math()"
+# snippet // "Fraction" iA
+# \\frac{$1}{$2}$0
+# endsnippet
+
+# context "math()"
+# # snippet / "Fraction" i
+# \\frac{${VISUAL}}{$1}$0
+# endsnippet
 
 context "math()"
-snippet / "Fraction" i
-\\frac{${VISUAL}}{$1}$0
-endsnippet
-
-context "math()"
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(\/\/)" "Fraction" riA
+\\frac{`!p snip.rv = match.group(1)`${VISUAL} $1}{$2}$0
 endsnippet
 
 context "math()"
 snippet ooo "\infty" iA
 \infty
-endsnippet
-
-snippet <= "leq" iA
-\le
-endsnippet
-
-snippet >= "geq" iA
-\ge
 endsnippet
 
 context "math()"
@@ -60,7 +52,6 @@ context "math()"
 snippet ynn "yn" iA
 y_{n}
 endsnippet
-
 
 context "math()"
 snippet xii "xi" iA
@@ -135,49 +126,14 @@ endsnippet
 
 context "math()"
 snippet ** "to the power" iA
-^{$1} $0
+^{$1 ${VISUAL}} $0
 endsnippet
 
 context "math()"
 snippet __ "subscript" iA
-_{$1} $0
+_{$1 ${VISUAL}} $0
 endsnippet
 
-snippet glbl "frequently used packages"
-% first declare the document class and other meta information
-\documentclass{$1}
-\author{ $2}
-\date{ $3}
-\title{ $4}
-
-% Now for some packages
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-\usepackage{graphicx}
-
-% Give the paragraphs some room to breathe
-\usepackage{parskip}
-
-% Import svg files for rendering plots
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-% for including images
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
-}
-
-% Aaaand begin!
-\begin{document}
-\maketitle
-$0
-
-
-\end{document}
-endsnippet
 
 context "math()"
 snippet sm "summation"
@@ -215,14 +171,14 @@ $1
 .\] $0
 endsnippet
 
-context "math()"
-snippet '([A-Za-z])(\d)' "auto subscript" wrA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
+# context "math()"
+# snippet '([A-Za-z])(\d)' "auto subscript" wrA
+# `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+# endsnippet
 
 context "math()"
-snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+snippet '([A-Za-z])(\d+)' "auto subscript2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1} $0
 endsnippet
 
 
@@ -249,25 +205,25 @@ endsnippet
 
 context "math()"
 priority 100
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)ssc" "SubSupersCript" riA
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)(dlt)" "SubSupersCript" riA
 `!p snip.rv=match.group(1)`_{ $1}^{ $2} $0
 endsnippet
 
 context "math()"
 priority 100
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)hat" "hat" riA
-\hat{`!p snip.rv=match.group(1)`}
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(hat)" "hat" riA
+\hat{`!p snip.rv=match.group(1)`$1 ${VISUAL}}
 endsnippet
 
 context "math()"
 priority 100
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)bar" "bar" riA
-\overline{`!p snip.rv=match.group(1)`}
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(bar)" "bar, or overline" riA
+\overline{`!p snip.rv=match.group(1)`$1 ${VISUAL}} $0
 endsnippet
 
 context "math()"
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)arw" "Vector postfix" riA
-\vec{`!p snip.rv=match.group(1)`}
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(vec)" "vector" riA
+\vec{`!p snip.rv=match.group(1)`$1 ${VISUAL}}
 endsnippet
 
 snippet bmat "bmat" iA
@@ -275,8 +231,8 @@ snippet bmat "bmat" iA
 endsnippet
 
 context "math()"
-snippet sq "\sqrt{}" iA
-\sqrt{${1:${VISUAL}}} $0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(sqrt)" "\sqrt{}" riA
+\sqrt{`!p snip.rv=match.group(1)`$1 ${VISUAL}} $0
 endsnippet
 
 context "math()"
@@ -286,24 +242,13 @@ endsnippet
 
 
 context "math()"
-priority 10
-snippet o,. "bar" iA
-\overline{$1} $0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(tlde)" "tilde" riA
+\widetilde{`!p snip.rv=match.group(1)`$1 ${VISUAL}} $0
 endsnippet
 
 context "math()"
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)tl" "tilde" riA
-\widetilde{`!p snip.rv=match.group(1)` $1} $0
-endsnippet
-
-context "math()"
-snippet ^^ "hat" iA
-\hat{ $1} $0
-endsnippet
-
-context "math()"
-snippet u,. "underline" iA
-\underline{$1} $0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(u,.)" "underline" iA
+\underline{`!p snip.rv = match.group(1)`$1 ${VISUAL}} $0
 endsnippet
 
 snippet svg "include inscape image" bA
@@ -317,13 +262,93 @@ $0
 endsnippet
 
 context "math()"
-snippet unbr "under brace" 
-\underbrace{ ${VISUAL}}$0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(unbr)" "underbrace" riA
+\\underbrace{`!p snip.rv = match.group(1)`$1 ${VISUAL}}$0
 endsnippet
 
+snippet fqup "frequently used packages" "snip.line==0 and snip.column==3" e
+% first declare the document class and other meta information
+\documentclass{$1}
+\author{ $2}
+\date{ $3}
+\title{ $4}
 
-context "math()"
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)unbr" "underbrace" riA
-\\underbrace{`!p snip.rv = match.group(1)`}$0
+% Now for some packages for text input
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+% and some packages for math
+\usepackage{siunitx}
+\sisetup{locale = US}
+
+\usepackage{mathtools, amsmath, amsfonts, amsthm, assymb}
+
+%finally some miscellaneous packages
+\usepackge{todonotes}
+% Give the paragraphs some room to breathe
+\usepackage{parskip}
+
+% Import svg files for rendering plots
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+% for including images
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+% add a few macros 
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+
+% add fancy contradition symbol
+\usepackage{stmaryrd} % for \lightning
+\newcommand\contra{\scalebox{1.5}{$\lightning$}}
+
+% a few easy shortcuts
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}
+
+% use a fancy header if you like:
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% 
+% LE: left even
+% RO: right odd
+% CE, CO: center even, center odd
+% My name 
+% \fancyhead[LE,RO]{Peter Iyer}
+% 
+% \fancyhead[RO,LE]{UGA} % Right odd,  Left even
+% \fancyhead[RE,LO]{}          % Right even, Left odd
+% 
+% \fancyfoot[RO,LE]{\thepage}  % Right odd,  Left even
+% \fancyfoot[RE,LO]{}          % Right even, Left odd
+% \fancyfoot[C]{\leftmark}     % Center
+% 
+% \makeatother
+
+% for economics (work in progress)
+% \DelcareMathOperator{\ngmdt}{}
+
+% Aaaand begin!
+\begin{document}
+\maketitle
+$0
+
+
+\end{document}
 endsnippet
 
