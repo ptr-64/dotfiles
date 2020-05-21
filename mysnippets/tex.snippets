@@ -83,17 +83,6 @@ y_{j}
 endsnippet
 
 context "math()"
-snippet cp1 "x" iA
-c_{$1 +1} $0
-endsnippet
-
-context "math()"
-snippet kp1 "x" iA
-k_{$1 +1} $0
-endsnippet
-
-
-context "math()"
 snippet xmm "x" iA
 x_{m}
 endsnippet
@@ -101,16 +90,6 @@ endsnippet
 context "math()"
 snippet xtt "x_t" iA
 x_{t}
-endsnippet
-
-context "math()"
-snippet ctt "x_t" iA
-c_{t}
-endsnippet
-
-context "math()"
-snippet ktt "x_t" iA
-k_{t}
 endsnippet
 
 snippet R0+ "R0+" iA
@@ -165,16 +144,22 @@ _{$1} $0
 endsnippet
 
 snippet glbl "frequently used packages"
+% first declare the document class and other meta information
 \documentclass{$1}
 \author{ $2}
 \date{ $3}
 \title{ $4}
-\usepackage{amsmath}
-\usepackage{amsfonts}
+
+% Now for some packages
 \usepackage[utf8]{inputenc}
-\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
 \usepackage{graphicx}
+
+% Give the paragraphs some room to breathe
 \usepackage{parskip}
+
+% Import svg files for rendering plots
 \usepackage{import}
 \usepackage{xifthen}
 \usepackage{pdfpages}
@@ -184,6 +169,8 @@ snippet glbl "frequently used packages"
     \def\svgwidth{\columnwidth}
     \import{./figures/}{#1.pdf_tex}
 }
+
+% Aaaand begin!
 \begin{document}
 \maketitle
 $0
@@ -261,24 +248,25 @@ snippet prtl "Partial" wA
 endsnippet
 
 context "math()"
-snippet _* "SubSupersCript" iA
-_{ $1}^{ $2} $0
+priority 100
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)ssc" "SubSupersCript" riA
+`!p snip.rv=match.group(1)`_{ $1}^{ $2} $0
 endsnippet
 
 context "math()"
 priority 100
-snippet "([a-zA-Z])hat" "hat" riA
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)hat" "hat" riA
 \hat{`!p snip.rv=match.group(1)`}
 endsnippet
 
 context "math()"
 priority 100
-snippet "([a-zA-Z])bar" "bar" riA
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)bar" "bar" riA
 \overline{`!p snip.rv=match.group(1)`}
 endsnippet
 
 context "math()"
-snippet "(\\?\w+)(,\.|\.,)" "Vector postfix" riA
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)arw" "Vector postfix" riA
 \vec{`!p snip.rv=match.group(1)`}
 endsnippet
 
@@ -299,13 +287,13 @@ endsnippet
 
 context "math()"
 priority 10
-snippet bar "bar" iA
+snippet o,. "bar" iA
 \overline{$1} $0
 endsnippet
 
 context "math()"
-snippet tl "tilde" iA
-\widetilde{$1} $0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)tl" "tilde" riA
+\widetilde{`!p snip.rv=match.group(1)` $1} $0
 endsnippet
 
 context "math()"
@@ -314,7 +302,7 @@ snippet ^^ "hat" iA
 endsnippet
 
 context "math()"
-snippet uline "underline" iA
+snippet u,. "underline" iA
 \underline{$1} $0
 endsnippet
 
@@ -329,12 +317,13 @@ $0
 endsnippet
 
 context "math()"
-snippet u.b "under brace" 
-\underbrace{ $1}$0
+snippet unbr "under brace" 
+\underbrace{ ${VISUAL}}$0
 endsnippet
 
 
 context "math()"
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)@" "hat" wrA
-\hat{`!p snip.rv=match.group(1)`}$0
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)unbr" "underbrace" riA
+\\underbrace{`!p snip.rv = match.group(1)`}$0
 endsnippet
+
