@@ -16,8 +16,8 @@ runtime! archlinux.vim
 
 "--------------------------------------------------------------
 
-" Tuen mouse on
-:set mouse=n
+" Turn mouse on
+:set mouse=a
 
 " hybrid numbering
 :set number relativenumber
@@ -45,8 +45,11 @@ set statusline+=%m      "modified flag
 set statusline+=%y      "filetype
 set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
-set statusline+=%l/%L   "cursor line/total lines
+set statusline+=%l\ of\ %L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+
+"Use Nerdtree
+map <F2> :NERDTreeToggle<CR>
 
 " VIM-PLUG
 " do not load defaults if ~/.vimrc is missing
@@ -103,5 +106,10 @@ Plug 'JuliaEditorSupport/julia-vim'
 " Initialize plugin system
 call plug#end()
 
+" lets make tab navigation a bit more sane
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
 " Change color scheme
 colorscheme nord
