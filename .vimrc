@@ -15,6 +15,24 @@ runtime! archlinux.vim
 " and configure vim to your own liking!
 
 "--------------------------------------------------------------
+" increase memory
+set maxmempattern=2000
+"Ensure nocompatible
+set nocompatible
+
+" map esc to jk
+inoremap jk <esc>
+inoremap <esc> <nop>
+augroup ftype_py
+	autocmd!
+	autocmd BufWritePre *.py :normal! gg=G
+	autocmd Filetype py setlocal foldmethod=indent
+augroup END
+augroup ftype_tex
+	autocmd!
+	autocmd BufNewFile *.tex setf tex
+	autocmd FileType tex setlocal foldmethod=indent
+augroup END
 
 " Turn mouse on
 :set mouse=a
@@ -22,8 +40,8 @@ runtime! archlinux.vim
 " hybrid numbering
 :set number relativenumber
 
-" highlight searches
-:set hls is
+" highlight searches and be case insensitive.
+:set hls is ic
 "nnoremap <F3> :set hlsearch!<CR>
 
 " close parenthesis/ brackets etc automatically
@@ -113,3 +131,5 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 " Change color scheme
 colorscheme nord
+
+
