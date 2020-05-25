@@ -27,6 +27,7 @@ augroup ftype_py
 	autocmd!
 	autocmd BufWritePre *.py :normal! gg=G
 	autocmd Filetype py setlocal foldmethod=indent
+	autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhitespace /s\s\+$/
 augroup END
 augroup ftype_tex
 	autocmd!
@@ -132,4 +133,12 @@ map <C-l> <C-w>l
 " Change color scheme
 colorscheme nord
 
-
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
