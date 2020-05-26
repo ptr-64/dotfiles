@@ -15,25 +15,37 @@ runtime! archlinux.vim
 " and configure vim to your own liking!
 
 "--------------------------------------------------------------
+" activate auto ftype detection
+syntax on
+filetype plugin indent on
+filetype plugin on
+syntax enable
+
+" ~#####  ####### ####### ####### ### #     #  #####   #####  
+" #       #          #       #     #  ##    # #       #      
+" #       #          #       #     #  # #   # #       #       
+"  #####  #####      #       #     #  #  #  # #  ####  #####  
+"       # #          #       #     #  #   # # #     #       # 
+"       # #          #       #     #  #    ## #     #       # 
+"  #####  #######    #       #    ### #     #  #####   #####
+
 " increase memory
 set maxmempattern=2000
+
+" use pastemode
+set pastetoggle=<F6>
+
+"care about the LeTtEr casing only if you should
+set ignorecase smartcase
+
+"don't bother with pointless :wq and :q!
+set hidden
+
+"live a little on the edge
+set noswapfile
+
 "Ensure nocompatible
 set nocompatible
-
-" map esc to jk
-inoremap jk <esc>
-inoremap <esc> <nop>
-augroup ftype_py
-	autocmd!
-	autocmd BufWritePre *.py :normal! gg=G
-	autocmd Filetype py setlocal foldmethod=indent
-	autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhitespace /s\s\+$/
-augroup END
-augroup ftype_tex
-	autocmd!
-	autocmd BufNewFile *.tex setf tex
-	autocmd FileType tex setlocal foldmethod=indent
-augroup END
 
 " Turn mouse on
 :set mouse=a
@@ -41,17 +53,10 @@ augroup END
 " hybrid numbering
 :set number relativenumber
 
-" highlight searches and be case insensitive.
+" highlight searches as I type and be case insensitive. The succeeding line
+" clears highlights when I hit enter a second time.
 :set hls is ic
-"nnoremap <F3> :set hlsearch!<CR>
-
-" close parenthesis/ brackets etc automatically
-" inoremap ' ''<left>
-" inoremap ( ()<left>
-" inoremap [ []<left>
-" inoremap { {}<left>
-" inoremap {<CR> {<CR>}<ESC>O
-" inoremap {;<CR> {<CR>};<ESC>O
+nnoremap <C-esc> :noh<cr><cr>
 
 " Use the statusline
 set laststatus=2
@@ -67,8 +72,53 @@ set statusline+=%c,     "cursor column
 set statusline+=%l\ of\ %L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
+
+" #     #    #    ######  ######  ### #     #  #####   #####  
+" ##   ##   # #   #     # #     #  #  ##    # #     # #     # 
+" # # # #  #   #  #     # #     #  #  # #   # #       #       
+" #  #  # #     # ######  ######   #  #  #  # #  ####  #####  
+" #     # ####### #       #        #  #   # # #     #       # 
+" #     # #     # #       #        #  #    ## #     # #     # 
+" #     # #     # #       #       ### #     #  #####   #####
+
+" quickly edit and source the vimrc
+nnoremap <leader>er :e $MYVIMRC<cr>
+nnoremap <leader><cr><cr> :source $MYVIMRC<cr>
+
+" lets make tab navigation a bit more sane
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
+
+" map ; -> : and : -> ;, esc to jk, and add a few autocommands
+noremap ; :
+noremap : ;
+inoremap jk <esc>
+inoremap <esc> <nop>
+augroup ausave
+	autocmd!
+	autocmd Filetype * :autocmd! CursorHold <buffer> :update
+augroup END
+
+augroup ftype_py
+	autocmd!
+	autocmd BufWritePre,BufRead *.py :normal! gg=G
+	autocmd Filetype python setlocal expandtab foldmethod=indent
+	autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhitespace /s\s\+$/
+augroup END
+
+augroup ftype_tex
+	autocmd!
+	autocmd BufNewFile,BufRead *.tex setf tex
+	autocmd FileType tex setlocal foldmethod=indent
+augroup END
+
+" use w!! to change a read only file without sudo-ing first
+cnoremap w!! w !sudo tee % >/dev/null 
+
 "Use Nerdtree
-map <F2> :NERDTreeToggle<CR>
+noremap <F2> :NERDTreeToggle<cr>
 
 " VIM-PLUG
 " do not load defaults if ~/.vimrc is missing
@@ -125,11 +175,5 @@ Plug 'JuliaEditorSupport/julia-vim'
 " Initialize plugin system
 call plug#end()
 
-" lets make tab navigation a bit more sane
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 " Change color scheme
 colorscheme nord
-
