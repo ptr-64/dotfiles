@@ -8,6 +8,7 @@ sudo pacman -S biber chromium inkscape julia python-pip r ranger texlive-most za
 for file in ~/dotfiles/{path, bash_prompt, exports, aliases, functions, extra}; do
 	[-r "$file" ] && [ -f "$file" ] && ln -s ~/dotfiles/"$file" ~/"$file";
 done;
+
 # This symlink ensures my ultisnips snippets still work with my vimrc.
 ln -s ~/dotfiles/mysnippets ~/.vim/mysnippets
 
