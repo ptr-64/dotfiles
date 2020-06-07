@@ -42,4 +42,7 @@ alias egrep='egrep --color=auto'
 # Usage: `mergepdf input{1,2,3}.pdf`
 alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
 
-
+# use the -I flag to make rm, cp, mv ask me before deleting everything
+alias rm='rm -vI'
+alias cp='cp -iv'
+alias mk='mv -iv'
