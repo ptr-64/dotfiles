@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # peter's bash installer
 
+#
 # these are the pacman packages I need to have in every work device
 sudo pacman -Syyu biber chromium inkscape julia python-pip r ranger texlive-most w3m zathura zathura-cb zathura-djvu zathura-pdf-mupdf
 
