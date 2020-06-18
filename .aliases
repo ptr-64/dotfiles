@@ -46,3 +46,6 @@ alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.p
 alias rm='rm -vI'
 alias cp='cp -iv'
 alias mk='mv -iv'
+
+# call the weathe radar
+alias doppler='bash /home/iyer/dotfiles/doppler'
