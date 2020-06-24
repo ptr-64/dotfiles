@@ -1,3 +1,3 @@
 #!/bin/sh
 
-mpv --loop-file=inf "https://radar.weather.gov/lite/N0R/FFC_loop.gif"
+mpv --stream-buffer-size=2m --loop-file=inf "https://radar.weather.gov/lite/N0R/FFC_loop.gif" 
