@@ -9,6 +9,7 @@ alias doc="cd ~/Documents"
 alias dwl="cd ~/Downloads"
 alias dot="cd ~/dotfiles"
 alias snip64="cd ~/dotfiles/mysnippets"
+alias dev="cd ~/devel"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
