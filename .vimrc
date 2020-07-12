@@ -158,7 +158,8 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " add support for pandoc and pandoc-syntax
 Plug 'vim-pandoc/vim-pandoc'  | Plug 'vim-pandoc/vim-pandoc-syntax'
