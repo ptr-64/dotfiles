@@ -8,6 +8,7 @@
 
 options(digits = 5)
 options(stringsAsFactors = FALSE)
+options(browser = '/usr/bin/firefox')
 error <- quote(dump.frames(str(./dump), to.file=TRUE))
 
 ## Set CRAN mirror:
