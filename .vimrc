@@ -140,10 +140,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'
 
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 
 " Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' 
@@ -158,8 +158,8 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 
 " add support for pandoc and pandoc-syntax
 Plug 'vim-pandoc/vim-pandoc'  | Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -176,5 +176,5 @@ Plug 'JuliaEditorSupport/julia-vim'
 " Initialize plugin system
 call plug#end()
 
-" Change color scheme
+" Change the color scheme to nord
 colorscheme nord
