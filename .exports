@@ -1,10 +1,14 @@
 # Make vim the default editor
 export EDITOR='vim';
 
+# Choose default terminal
+export TERMINAL='kitty'
+
 # Language preferences
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
 
+# Add the devel folder for development projects and define the virtual environment directory. Then source it.
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOMR=$HOME/devel
 source /home/iyer/.local/bin/virtualenvwrapper.sh
