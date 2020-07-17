@@ -56,7 +56,7 @@ set nocompatible
 " highlight searches as I type and be case insensitive. The succeeding line
 " clears highlights when I hit enter a second time.
 :set hls is ic
-nnoremap <C-esc> :noh<cr><cr>
+nnoremap <leader><esc> :noh<cr><cr>
 
 " Use the statusline
 set laststatus=2
@@ -82,7 +82,7 @@ set statusline+=\ %P    "percent through file
 " #     # #     # #       #       ### #     #  #####   #####
 
 " quickly edit and source the vimrc
-nnoremap <leader>er :e $MYVIMRC<cr>
+nnoremap <leader>er :tabnew $MYVIMRC<cr>
 nnoremap <leader><cr><cr> :source $MYVIMRC<cr>
 
 " lets make tab navigation a bit more sane
