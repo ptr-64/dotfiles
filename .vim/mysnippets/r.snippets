@@ -1,0 +1,7 @@
+snippet ggpt
+		ggplot(data = ${1:Data}) +
+		${2:geom_fn}(
+		mapping = aes(${3:maps}), 
+		stat = ${4:stat},
+		position = ${5:position}) +
+		${6:coordinate_fn} + ${7:facet_fn}
