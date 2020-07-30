@@ -29,6 +29,8 @@ syntax enable
 "       # #          #       #     #  #    ## #     #       # 
 "  #####  #######    #       #    ### #     #  #####   #####
 
+"set tab = 4 <spaces>
+set ts=4 sw=4
 " increase memory
 set maxmempattern=2000
 
@@ -96,22 +98,14 @@ noremap ; :
 noremap : ;
 inoremap jk <esc>
 inoremap <esc> <nop>
+inoremap OD <left>
+inoremap OC <right>
+inoremap OA <up>
+inoremap OB <down>
+
 augroup ausave
 	autocmd!
 	autocmd Filetype * :autocmd! CursorHold <buffer> :update
-augroup END
-
-augroup ftype_py
-	autocmd!
-	autocmd BufWritePre,BufRead *.py :normal! gg=G
-	autocmd Filetype python setlocal expandtab foldmethod=indent
-	autocmd BufRead,BufNewFile *.py, *.pyw, *.c, *.h match BadWhitespace /s\s\+$/
-augroup END
-
-augroup ftype_tex
-	autocmd!
-	autocmd BufNewFile,BufRead *.tex setf tex
-	autocmd FileType tex setlocal foldmethod=indent
 augroup END
 
 " use w!! to change a read only file without sudo-ing first
