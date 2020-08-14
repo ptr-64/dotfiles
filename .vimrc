@@ -164,6 +164,7 @@ Plug 'vim-pandoc/vim-rmarkdown'
 " and also add latex support
 Plug 'lervag/vimtex'
 let g:vimtex_view_method = 'zathura'
+let g:tex_flavor="latex"
 
 " Add julia support
 Plug 'JuliaEditorSupport/julia-vim'
