@@ -44,47 +44,13 @@ snippet AA "forall" iA
 endsnippet
 
 context "math()"
-snippet xnn "xn" iA
-x_{n}
+snippet '([A-Za-z])(II|JJ|KK|NN|TT)' "xn" rwA
+`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`}
 endsnippet
 
 context "math()"
-snippet ynn "yn" iA
-y_{n}
-endsnippet
-
-context "math()"
-snippet xii "xi" iA
-x_{i}
-endsnippet
-
-context "math()"
-snippet yii "yi" iA
-y_{i}
-endsnippet
-
-context "math()"
-snippet xjj "xj" iA
-x_{j}
-endsnippet
-
-context "math()"
-snippet yjj "yj" iA
-y_{j}
-endsnippet
-
-context "math()"
-snippet xmm "x" iA
-x_{m}
-endsnippet
-
-context "math()"
-snippet xtt "x_t" iA
-x_{t}
-endsnippet
-
-snippet R0+ "R0+" iA
-\\R_0^+
+snippet '([A-Za-z])(IPP|JPP|KPP|NPP|TPP)' "xn+1" rwA
+`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`+$1}
 endsnippet
 
 context "math()"
@@ -100,7 +66,7 @@ endsnippet
 
 priority 300
 context "math()"
-snippet dint "integral" wA
+snippet ntgrl "integral" wA
 \int\limits_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
 endsnippet
 
@@ -141,7 +107,7 @@ endsnippet
 
 
 context "math()"
-snippet sm "summation"
+snippet smm "summation"
 \sum\limits_{ $1}^{ $2}
 endsnippet
 
@@ -187,10 +153,10 @@ snippet '([A-Za-z])(\d+)' "auto subscript2" wrA
 endsnippet
 
 
-context "math()"
-snippet cmpl "complement" iA
-^{c}
-endsnippet
+# context "math()"
+# snippet cmpl "complement" iA
+# ^{c}
+# endsnippet
 
 
 context "math()"
@@ -227,7 +193,7 @@ snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(bar)" "bar, or ov
 endsnippet
 
 context "math()"
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(vec)" "vector" riA
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(vct)" "vector" riA
 \vec{`!p snip.rv=match.group(1)`$1 ${VISUAL}}
 endsnippet
 
@@ -267,7 +233,7 @@ $0
 endsnippet
 
 context "math()"
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(unbr)" "underbrace" riA
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(undb)" "underbrace" riA
 \\underbrace{`!p snip.rv = match.group(1)`$1 ${VISUAL}}$0
 endsnippet
 
