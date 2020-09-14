@@ -1,4 +1,4 @@
-snippet hyad "YAML header" bA
+snippet hd "YAML header" bA
 ---
 title: $1
 author: $2
@@ -12,9 +12,7 @@ $${1}$ $0
 endsnippet
 
 snippet dm "Math" wA
-$$
-${1:${VISUAL}}
-$$ $0
+\[${1:${VISUAL}}\] $0
 endsnippet
 
 snippet AA "for all" wA
@@ -35,4 +33,12 @@ endsnippet
 
 snippet >>> "Rightarrow" wA
 \Rightarrow
+endsnippet
+
+snippet // "fraction" wA
+\frac{$1}{$2} $0
+endsnippet
+
+snippet prtl "partial" wA
+\frac{ \partial $1}{\partial $2} $0
 endsnippet

@@ -54,13 +54,13 @@ snippet '([A-Za-z])(IPP|JPP|KPP|NPP|TPP)' "xn+1" rwA
 endsnippet
 
 context "math()"
-snippet '(?<!\\)(alpha|beta|gamma|theta|nu|mu|epsilon|delta|rho|phi|eta|zeta|iota|kappa|lambda)' "greek" rw
+snippet '(?<!\\)(alpha|beta|gamma|theta|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda|veta|vepsilon|vi|vigma|vhi|vho)' "greek" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star|perp)' "ln" rwA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|ln|log|exp|star|perp)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -70,11 +70,11 @@ snippet ntgrl "integral" wA
 \int\limits_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
 endsnippet
 
-priority 200
-context "math()"
-snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rwA
-\\`!p snip.rv = match.group(1)`
-endsnippet
+#priority 200
+#context "math()"
+#snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rwA
+#\\`!p snip.rv = match.group(1)`
+#endsnippet
 
 context "math()"
 snippet ccc "subset" Ai
@@ -237,90 +237,16 @@ snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(undb)" "underbrac
 \\underbrace{`!p snip.rv = match.group(1)`$1 ${VISUAL}}$0
 endsnippet
 
-snippet fqup "frequently used packages" "snip.line==0 and snip.column==3" e
-% first declare the document class and other meta information
-\documentclass{$1}
-\author{ $2}
-\date{ $3}
-\title{ $4}
-
-% Now for some packages for text input
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-\usepackage{csquotes}
-\usepackage{graphicx}
-\usepackage{url}
-\usepackage{float}
-\usepackage{booktabs}
-\usepackage{enumitem}
-
-% and some packages for math
-\usepackage{siunitx}
-\sisetup{locale = US}
-
-\usepackage{mathtools, amsmath, amsfonts, amsthm, amssymb}
-
-%finally some miscellaneous packages
-\usepackage{todonotes}
-% Give the paragraphs some room to breathe
-\usepackage{parskip}
-
-% Import svg files for rendering plots
-\usepackage{import}
-\usepackage{xifthen}
-\usepackage{pdfpages}
-\usepackage{transparent}
-% for including images
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./figures/}{#1.pdf_tex}
-}
-
-% add a few macros 
-\DeclareMathOperator*{\argmax}{argmax}
-\DeclareMathOperator*{\argmin}{argmin}
-
-% add fancy contradition symbol
-\usepackage{stmaryrd} % for \lightning
-\newcommand\contra{\scalebox{1.5}{$\lightning$}}
-
-% a few easy shortcuts
-\newcommand\N{\ensuremath{\mathbb{N}}}
-\newcommand\R{\ensuremath{\mathbb{R}}}
-\newcommand\Z{\ensuremath{\mathbb{Z}}}
-\renewcommand\O{\ensuremath{\emptyset}}
-\newcommand\Q{\ensuremath{\mathbb{Q}}}
-\newcommand\C{\ensuremath{\mathbb{C}}}
-
-% use a fancy header if you like:
-% \usepackage{fancyhdr}
-% \pagestyle{fancy}
-% 
-% LE: left even
-% RO: right odd
-% CE, CO: center even, center odd
-% My name 
-% \fancyhead[LE,RO]{Peter Iyer}
-% 
-% \fancyhead[RO,LE]{UGA} % Right odd,  Left even
-% \fancyhead[RE,LO]{}          % Right even, Left odd
-% 
-% \fancyfoot[RO,LE]{\thepage}  % Right odd,  Left even
-% \fancyfoot[RE,LO]{}          % Right even, Left odd
-% \fancyfoot[C]{\leftmark}     % Center
-% 
-% \makeatother
-
-% for economics (work in progress)
-% \DelcareMathOperator{\ngmdt}{}
-
-% Aaaand begin!
+snippet prmbl "preamble"
+\documentclass[$1]{$2}
+$3
+\title{$4}
+\author{$5}
+\date{$6}
 \begin{document}
 \maketitle
-$0
 
+$0
 
 \end{document}
 endsnippet
-
