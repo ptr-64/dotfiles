@@ -93,15 +93,17 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 
+" add spell check
+noremap <F5> :setlocal spell!<cr>
 " map ; -> : and : -> ;, esc to jk, and add a few autocommands
 noremap ; :
 noremap : ;
 inoremap jk <esc>
-inoremap <esc> <nop>
-inoremap OD <left>
-inoremap OC <right>
-inoremap OA <up>
-inoremap OB <down>
+"inoremap <esc> <nop>
+"inoremap OD <left>
+"inoremap OC <right>
+"inoremap OA <up>
+"inoremap OB <down>
 
 augroup ausave
 	autocmd!
