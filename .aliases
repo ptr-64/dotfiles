@@ -8,7 +8,7 @@ alias .....="cd ../../../.."
 alias doc="cd ~/Documents"
 alias dwl="cd ~/Downloads"
 alias dot="cd ~/dotfiles"
-alias snip64="cd ~/dotfiles/mysnippets"
+alias mysnip="cd ~/dotfiles/.vim/mysnippets"
 alias dev="cd ~/devel"
 
 # Detect which `ls` flavor is in use
@@ -49,4 +49,4 @@ alias cp='cp -iv'
 alias mk='mv -iv'
 
 # call the weathe radar
-alias doppler='bash /home/iyer/dotfiles/doppler'
+alias doppler='bash /home/"$USER"/dotfiles/doppler'

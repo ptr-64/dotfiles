@@ -1,4 +1,19 @@
-snippet hd "YAML header" bA
+global !p
+texMathZones = ['texMathZone' + x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z', 'AmsA', 'AmsB', 'AmsC', 'AmsD', 'AmsE', 'AmsF', 'AmsG', 'AmsAS', 'AmsBS', 'AmsCS', 'AmsDS', 'AmsES', 'AmsFS', 'AmsGS' ]]
+texIgnoreMathZones = ['texMathText']
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+ignore = texIgnoreMathZoneIds[0]
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
+snippet yaml "YAML header" bA
 ---
 title: $1
 author: $2
@@ -8,37 +23,109 @@ $0
 endsnippet
 
 snippet mk "math" wA
-$${1}$ $0
+$${1}$$0
 endsnippet
 
 snippet dm "Math" wA
 \[${1:${VISUAL}}\] $0
 endsnippet
 
+context math()
 snippet AA "for all" wA
 \forall
 endsnippet
 
+context math()
 snippet EE "exists" wA
 \exists
 endsnippet
 
+context math()
 snippet __ "subscript" iA
-_{$1} $0 
+_{$1}$0 
 endsnippet
 
+context math()
 snippet ** "superscript" iA
-^{$1} $0
+^{$1}$0
 endsnippet
 
-snippet >>> "Rightarrow" wA
+context math()
+snippet @>> "Rightarrow" wA
 \Rightarrow
 endsnippet
 
+context math()
 snippet // "fraction" wA
-\frac{$1}{$2} $0
+\frac{$1}{$2}$0
 endsnippet
 
+context math()
 snippet prtl "partial" wA
-\frac{ \partial $1}{\partial $2} $0
+\frac{ \partial $1}{\partial $2}$0
+endsnippet
+
+context math()
+snippet mbb "mathbb" 
+\mathbb{$1}$0
+endsnippet
+
+context math()
+priority 100
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(bar)" "bar, or overline" riA
+\overline{`!p snip.rv=match.group(1)`$1 ${VISUAL}} $0
+endsnippet
+
+snippet beg "begin" b
+\begin{${1:env}}
+${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])(II|JJ|KK|NN|TT)' "xn" rwA
+`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`}
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])(IPP|JPP|KPP|NPP|TPP)' "xn+1" rwA
+`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`+$1}
+endsnippet
+
+context "math()"
+snippet '(?<!\\)(alpha|beta|gamma|theta|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda)' "greek" rw
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 100
+context "math()"
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|ln|log|exp|star|perp)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 300
+context "math()"
+snippet ntgrl "integral" wA
+\int\limits_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
+endsnippet
+
+context "math()"
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(tlde)" "tilde" riA
+\widetilde{`!p snip.rv=match.group(1)`$1 ${VISUAL}} $0
+endsnippet
+
+context "math()"
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(u,.)" "underline" iA
+\underline{`!p snip.rv = match.group(1)`$1 ${VISUAL}} $0
+endsnippet
+
+context "math()"
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(vct)" "vector" riA
+\vec{`!p snip.rv=match.group(1)`$1 ${VISUAL}}
+endsnippet
+
+context "math()"
+priority 100
+snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(hat)" "hat" riA
+\hat{`!p snip.rv=match.group(1)`$1 ${VISUAL}}
 endsnippet
