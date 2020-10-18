@@ -18,3 +18,6 @@ shopt -s nocaseglob;
 
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend;
+export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
