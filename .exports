@@ -1,12 +1,15 @@
 # Make vim the default editor
 export EDITOR='vim';
 
-# Choose default terminal
-export TERMINAL='kitty'
+# Choose default terminal-- meh don't bother
+#export TERMINAL='kitty'
 
 # Language preferences
 export LANG='en_US.UTF-8';
 export LC_ALL='en_US.UTF-8';
+
+# let Python use UTF-8 encoding for output to std(in|out|err)
+export PYTHONIOENCODING='UTF-8';
 
 # Add the devel folder for development projects and define the virtual environment directory. Then source it.
 export WORKON_HOME=$HOME/.virtualenvs

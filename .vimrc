@@ -16,10 +16,8 @@ runtime! archlinux.vim
 
 "--------------------------------------------------------------
 " activate auto ftype detection
-syntax on
 filetype plugin indent on
 filetype plugin on
-syntax enable
 
 " ~#####  ####### ####### ####### ### #     #  #####   #####  
 " #       #          #       #     #  ##    # #       #      
@@ -29,37 +27,35 @@ syntax enable
 "       # #          #       #     #  #    ## #     #       # 
 "  #####  #######    #       #    ### #     #  #####   #####
 
+" prevent redundant syntax nonsense
+if !exists("g:syntax_on")
+	syntax enable
+endif
+" Command line completion
+set wildmenu
+" Show the partial command as I type
+set showcmd
 "set tab = 4 <spaces>
 set ts=2 sw=2
 " increase memory
 set maxmempattern=2000
-
 " use pastemode
-set pastetoggle=<F6>
-
+" set pastetoggle=<F6>
 "care about the LeTtEr casing only if you should
 set ignorecase smartcase
-
 "don't bother with pointless :wq and :q!
 set hidden
-
 "live a little on the edge
 set noswapfile
-
 "Ensure nocompatible
 set nocompatible
-
 " Turn mouse on
 :set mouse=a
-
 " hybrid numbering
 :set number relativenumber
-
 " highlight searches as I type and be case insensitive. The succeeding line
-" clears highlights when I hit enter a second time.
+" clears highlights when I hit leader-esc.
 :set hls is ic
-nnoremap <leader><esc> :noh<cr><cr>
-
 " Use the statusline
 set laststatus=2
 set statusline=%t       "tail of the filename
@@ -73,7 +69,7 @@ set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l\ of\ %L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
-
+set scrolloff=3
 
 " #     #    #    ######  ######  ### #     #  #####   #####  
 " ##   ##   # #   #     # #     #  #  ##    # #     # #     # 
@@ -83,16 +79,23 @@ set statusline+=\ %P    "percent through file
 " #     # #     # #       #        #  #    ## #     # #     # 
 " #     # #     # #       #       ### #     #  #####   #####
 
+" Strip whitespace
+function! StripWhitespace()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+noremap <leader>ws :call StripWhitespace()<CR>
 " quickly edit and source the vimrc
 nnoremap <leader>er :tabnew $MYVIMRC<cr>
 nnoremap <leader><cr><cr> :source $MYVIMRC<cr>
-
 " lets make tab navigation a bit more sane
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-
 " add spell check
 noremap <F5> :setlocal spell!<cr>
 " map ; -> : and : -> ;, esc to jk, and add a few autocommands
@@ -109,13 +112,10 @@ augroup ausave
 	autocmd!
 	autocmd Filetype * :autocmd! CursorHold <buffer> :update
 augroup END
-
 " use w!! to change a read only file without sudo-ing first
 cnoremap w!! w !sudo tee % >/dev/null 
-
 "Use Nerdtree
 noremap <F2> :NERDTreeToggle<cr>
-
 " VIM-PLUG
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
