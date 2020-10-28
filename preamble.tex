@@ -2,18 +2,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage{csquotes}
+%\usepackage{csquotes}
 \usepackage{graphicx}
 \usepackage{url}
 \usepackage{float}
 \usepackage{booktabs}
 % \usepackage{enumitem}
-
+\usepackage[]{microtype} 
+\usepackage[style=authoryear]{biblatex} 
 % and some packages for math
 \usepackage{siunitx}
 \sisetup{locale = US}
 
-\usepackage{mathtools, amsmath, amsfonts, amsthm, amssymb}
+\usepackage{mathtools, amsmath, amsfonts, amsthm, amssymb, bbm}
 
 %finally some miscellaneous packages
 \setlength {\marginparwidth}{2cm}
@@ -35,7 +36,7 @@
 % add a few macros 
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
-
+\DeclareMathOperator*{\plim}{\mathit{p}-lim}
 % add fancy contradition symbol
 \usepackage{stmaryrd} % for \lightning
 \newcommand\contra{\scalebox{1.5}{$\lightning$}}

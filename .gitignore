@@ -1,4 +1,5 @@
 # intermediate tex files
+*.bcf
 *.aux
 *.bbl
 *.blg
