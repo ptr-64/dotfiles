@@ -44,23 +44,23 @@ snippet AA "forall" iA
 endsnippet
 
 context "math()"
-snippet '([A-Za-z])(II|JJ|KK|NN|TT)' "xn" rwA
+snippet '([A-Za-z])(II|JJ|KK|LL|MM|NN|TT)' "xn" rwA
 `!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`}
 endsnippet
 
 context "math()"
-snippet '([A-Za-z])(IPP|JPP|KPP|NPP|TPP)' "xn+1" rwA
+snippet '([A-Za-z])(IPP|JPP|KPP|LPP|MPP|NPP|TPP)' "xn+1" rwA
 `!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`+$1}
 endsnippet
 
 context "math()"
-snippet '(?<!\\)(alpha|beta|gamma|theta|sigma|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda)' "greek" rw
+snippet '(?<!\\)(alpha|beta|gamma|theta|zeta|tau|chi|psi|omega|sigma|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda|xi|eta|pi)' "greek" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|ln|log|exp|star|perp|because|therefore|forall|iff|ne|succ|succeq|R|C|lim|sim)' "ln" rwA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|ln|log|exp|star|perp|because|therefore|forall|iff|ne|succ|succeq|plim|in|R|C|lim|sim)' "ln" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 

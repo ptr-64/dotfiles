@@ -144,7 +144,7 @@ Plug 'arcticicestudio/nord-vim'
 " Multiple Plug commands can be written in a single line using | separators
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' 
 " modify the ultisnip behavior
-" let g:UltiSnipsSnippetDirectories=[ "UltiSnips", "mysnippets"]
+let g:UltiSnipsSnippetDirectories=[ "UltiSnips"]
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
