@@ -45,7 +45,7 @@ endsnippet
 
 context "math()"
 snippet '([A-Za-z])(II|JJ|KK|LL|MM|NN|TT)' "xn" rwA
-`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`}
+`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`$1}
 endsnippet
 
 context "math()"
@@ -60,7 +60,13 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|ln|log|exp|star|perp|because|therefore|forall|iff|ne|succ|succeq|plim|in|R|C|lim|sim)' "ln" rwA
+snippet '(?<!\\)(ln|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|R|C|lim|sim|ge|le)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 200
+context "math()"
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|star|perp)' "ln2" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -175,9 +181,15 @@ endsnippet
 
 context "math()"
 priority 100
-snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)(dlt)" "SubSupersCript" riA
+snippet "((\(|\||\[|\{)*(\d*)(\\)?([A-Za-z]+)*(\)|\]|\||\})*)(dlt)" "SubSupersCript" riA
 `!p snip.rv=match.group(1)`_{$1}^{$2}$0
 endsnippet
+
+#context "math()"
+#priority 100
+#snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)(dlt)" "SubSupersCript" riA
+#`!p snip.rv=match.group(1)`_{$1}^{$2}$0
+#endsnippet
 
 context "math()"
 priority 100
