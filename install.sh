@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # peter's bash installer
 
-#
+# First update the mirror list
+sudo pacman-mirrors -f
 # these are the pacman packages I need to have in every work device
- sudo pacman -Syyu base-devel biber firefox inkscape julia kitty mpv newsboat python-pip r ranger texlive-most gvim zathura zathura-cb zathura-djvu zathura-pdf-mupdf zopfli
+ sudo pacman -Syyu anki base-devel biber firefox inkscape julia mpv python-pip r ranger texlive-most tmux gvim zathura zathura-cb zathura-djvu zathura-pdf-mupdf zopfli
 
 # Now symlink everythin
 ln -sf /home/"$USER"/dotfiles/.aliases /home/"$USER"/.aliases
