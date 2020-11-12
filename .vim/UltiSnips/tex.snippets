@@ -28,6 +28,10 @@ snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(\/\/)" "Fraction"
 \\frac{`!p snip.rv = match.group(1)`${VISUAL}$1}{$2}$0
 endsnippet
 
+snippet "" "latex quotes"
+\`\`$1''
+endsnippet
+
 # context "math()"
 # snippet ooo "\infty" iA
 # \infty
@@ -60,7 +64,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(ln|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|R|C|lim|sim|ge|le)' "ln" rwA
+snippet '(?<!\\)(ln|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|R|C|lim|sim|ge|le)' "ln" wr
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -252,7 +256,7 @@ endsnippet
 
 snippet prmbl "preamble"
 \documentclass[$1]{$2}
-$3
+${3: HINT: eg \input{path/to/input.tex}, or \addbibresource, or \usepackage[disable]{todonotes}}
 \title{$4}
 \author{$5}
 \date{$6}

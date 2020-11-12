@@ -76,7 +76,7 @@ else
 	black="\e[1;30m";
 	blue="\e[1;34m";
 	cyan="\e[1;36m";
-	green="\e[1;32m";
+	green="\e[0;32m";
 	orange="\e[1;33m";
 	purple="\e[1;35m";
 	red="\e[1;31m";
@@ -109,7 +109,7 @@ PS1+="\[${hostStyle}\]\h"; # host
 # PS1+="\[${white}\] in ";
 PS1+="\n";
 PS1+='\[${cyan}\] in $(pwd|awk -F/ -v "n=$(tput cols)" -v "h=^$HOME" '\''{sub(h,"~");n=0.3*n;b=$1"/"$2} length($0)<=n || NF==3 {print;next;} NF>3{b=b"/../"; e=$NF; n-=length(b $NF); for (i=NF-1;i>3 && n>length(e)+1;i--) e=$i"/"e;} {print b e;}'\'') ' #PS1+="\[${cyan}\] in \W"; # working directory full path
-PS1+="\$(prompt_git \"\[${white}\]: \[${violet}\]\" \"\[${blue}\]\")"; # Git repository details
+PS1+="\$(prompt_git \"\[${white}\]: \[${green}\]\" \"\[${blue}\]\")"; # Git repository details
 # PS1+="\n";
 PS1+="\[${white}\]\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;

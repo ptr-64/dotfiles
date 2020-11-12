@@ -43,6 +43,7 @@ set maxmempattern=2000
 " set pastetoggle=<F6>
 "care about the LeTtEr casing only if you should
 set ignorecase smartcase
+set wildignorecase
 "don't bother with pointless :wq and :q!
 set hidden
 "live a little on the edge
@@ -142,7 +143,7 @@ Plug 'arcticicestudio/nord-vim'
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets' 
+Plug 'SirVer/ultisnips' | Plug 'ptr-64/vim-snippets' 
 " modify the ultisnip behavior
 let g:UltiSnipsSnippetDirectories=[ "UltiSnips"]
 let g:UltiSnipsExpandTrigger="<tab>"
