@@ -10,6 +10,7 @@ alias dwl="cd ~/Downloads"
 alias dot="cd ~/dotfiles"
 alias mysnip="cd ~/dotfiles/.vim/mysnippets"
 alias dev="cd ~/devel"
+alias R="R --no-save --no-restore-data"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -47,9 +48,6 @@ alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.p
 alias rm='rm -vI'
 alias cp='cp -iv'
 alias mv='mv -iv'
-
-# call the weathe radar
-alias doppler='bash /home/"$USER"/dotfiles/doppler'
 
 # reload the shell
 alias reload="exec ${SHELL} -l"

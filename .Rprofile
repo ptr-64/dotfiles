@@ -6,9 +6,9 @@
   message("Welcome back ", Sys.getenv("USER"),"!\n","you are in: ", getwd(), "!\n", "and your working memory has been cleared.")
 }
 
-options(digits = 5)
-options(stringsAsFactors = FALSE)
-options(browser = '/usr/bin/firefox')
+# options(digits = 5)
+# options(stringsAsFactors = FALSE)
+# options(browser = '/usr/bin/firefox')
 # options(na.action = na.warn)
 error <- quote(dump.frames(str(./dump), to.file=TRUE))
 
