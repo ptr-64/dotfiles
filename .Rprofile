@@ -6,7 +6,7 @@
 }
 
 # options(digits = 5)
-options(stringsAsFactors = FALSE,
+options( #stringsAsFactors = FALSE,
         warnPartialMatchAttr = TRUE,
         warnPartialMathDollar = TRUE,
         tab.width =2

@@ -1,4 +1,4 @@
-snippet ggpt
+snippet ggplt
 		ggplot(data = ${1:Data}) +
 		${2:geom_fn}(
 		mapping = aes(${3:maps}), 
@@ -7,14 +7,19 @@ snippet ggpt
 		${6:coordinate_fn} + ${7:facet_fn}
 endsnippet 
 
+snippet lbry "recursive library"
+library($1)
+${0:lbry}
+endsnippet
+
 snippet fn "function"
 ${1:function name} <- function(${2:function arguments}){
-
+  ${3:function body}
 }
 endsnippet
 
 snippet floop "for loop"
 for (${1:condition}){
-$2
+  $2
 }
 endsnippet

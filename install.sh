@@ -20,9 +20,15 @@ ln -sf /home/"$USER"/dotfiles/.Rprofile /home/"$USER"/.Rprofile
 ln -sf /home/"$USER"/dotfiles/.tmux.conf /home/"$USER"/.tmux.conf
 ln -sf /home/"$USER"/dotfiles/.vimrc /home/"$USER"/.vimrc
 ln -sf /home/"$USER"/dotfiles/.vim /home/"$USER"/.vim
-
+ln -s /home/"$USER"/dotfiles/nord-konsole/src/nord.colorscheme /home/"$USER"/.local/share/konsole/nord.colorscheme
 
 # run vim once to allow the plugins to get installed.
 
 # install my essential python packages
 pip3 install Unidecode virtualenv virtualenvwrapper
+
+# install tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm /home/"$USER"/.tmux/plugins/tpm
+
+# install konsole theme
+git clone https://github.com/ptr-64/nord-konsole.git

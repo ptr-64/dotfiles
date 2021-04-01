@@ -36,7 +36,7 @@ set wildmenu
 " Show the partial command as I type
 set showcmd
 "set tab = 4 <spaces>
-set ts=2 sw=2
+set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab 
 " increase memory
 set maxmempattern=2000
 " use pastemode
