@@ -36,7 +36,7 @@ set wildmenu
 " Show the partial command as I type
 set showcmd
 "set tab = 4 <spaces>
-set tabstop=8 softtabstop=0 expandtab shiftwidth=2 smarttab 
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab 
 " increase memory
 set maxmempattern=2000
 " use pastemode
@@ -71,6 +71,10 @@ set statusline+=%c,     "cursor column
 set statusline+=%l\ of\ %L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 set scrolloff=3
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 " #     #    #    ######  ######  ### #     #  #####   #####  
 " ##   ##   # #   #     # #     #  #  ##    # #     # #     # 
@@ -176,3 +180,13 @@ call plug#end()
 
 " Change the color scheme to nord
 colorscheme nord
+
+" python with venv support
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF

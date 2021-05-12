@@ -1,18 +1,3 @@
-# global !p
-# texMathZones = ['texMathRegion' + x for x in ['', 'X', 'XX', 'Env', 'EnvStarred', 'Ensured']]
-# texIgnoreMathZones = ['texMathTextArg'] # ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z', 'AmsA', 'AmsB', 'AmsC', 'AmsD', 'AmsE', 'AmsF', 'AmsG', 'AmsAS', 'AmsBS', 'AmsCS', 'AmsDS', 'AmsES', 'AmsFS', 'AmsGS' ]]
-# # texIgnoreMathZones = ['texMathText']
-# texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
-# texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
-# ignore = texIgnoreMathZoneIds[0]
-# def math():
-# 	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
-# 	try:
-# 		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
-# 		return first != ignore
-# 	except StopIteration:
-# 		return False
-# endglobal
 
 global !p
 def math():
@@ -23,15 +8,6 @@ def env(name):
 	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
 	return x != '0' and y != '0'
 endglobal
-context "math()"
-# snippet // "Fraction" iA
-# \\frac{$1}{$2}$0
-# endsnippet
-
-context "math()"
-# # snippet / "Fraction" i
-# \\frac{${VISUAL}}{$1}$0
-# endsnippet
 
 context "math()"
 snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(\/\/)" "Fraction" riA
@@ -41,11 +17,6 @@ endsnippet
 snippet "" "latex quotes"
 \`\`$1''
 endsnippet
-
-context "math()"
-# snippet ooo "\infty" iA
-# \infty
-# endsnippet
 
 context "math()"
 snippet EE "exists" iA
@@ -62,13 +33,8 @@ snippet '([A-Za-z])(II|JJ|KK|LL|MM|NN|TT)' "xn" rwA
 `!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`$1}
 endsnippet
 
-#context "math()"
-#snippet '([A-Za-z])(IPP|JPP|KPP|LPP|MPP|NPP|TPP)' "xn+1" rwA
-#`!p snip.rv = match.group(1)`_{`!p snip.rv=match.group(2)[0].lower()`+$1}
-#endsnippet
-
 context "math()"
-snippet '(?<!\\)(alpha|beta|gamma|theta|zeta|tau|chi|psi|omega|sigma|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda|xi|eta|pi)' "greek" rw
+snippet '(?<!\\|[a-z])(alpha|beta|gamma|theta|zeta|tau|chi|psi|omega|sigma|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda|xi|eta|pi)' "greek" rw
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -90,12 +56,6 @@ snippet ntgrl "integral" wA
 \int\limits_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}}$0
 endsnippet
 
-#priority 200
-#context "math()"
-#snippet '(?<!\\)(arcsin|arccos|arctan|arccot|arccsc|arcsec|pi|zeta|int)' "ln" rwA
-#\\`!p snip.rv = match.group(1)`
-#endsnippet
-
 context "math()"
 snippet ccc "(proper)subset" iA
 \subset${1:eq}
@@ -105,11 +65,6 @@ context "math()"
 snippet notin "not in " iA
 \not\in
 endsnippet
-
-context "math()"
-# snippet RR "real" iA
-# \R
-# endsnippet
 
 snippet mbb "mathbb"
 \mathbb{$1}$0
@@ -163,20 +118,9 @@ $1
 endsnippet
 
 context "math()"
-# snippet '([A-Za-z])(\d)' "auto subscript" wrA
-# `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-# endsnippet
-
-context "math()"
 snippet '([A-Za-z])(\d+)' "auto subscript2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
-
-context "math()"
-# snippet cmpl "complement" iA
-# ^{c}
-# endsnippet
-
 
 context "math()"
 snippet >> "rightarrow" wA
@@ -198,12 +142,6 @@ priority 100
 snippet "((\(|\||\[|\{)*(\d*)(\\)?([A-Za-z]+)*(\)|\]|\||\})*)(dlt)" "SubSupersCript" riA
 `!p snip.rv=match.group(1)`_{$1}^{$2}$0
 endsnippet
-
-#context "math()"
-#priority 100
-#snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)(dlt)" "SubSupersCript" riA
-#`!p snip.rv=match.group(1)`_{$1}^{$2}$0
-#endsnippet
 
 context "math()"
 priority 100
@@ -264,6 +202,12 @@ snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(undb)" "underbrac
 \\underbrace{`!p snip.rv = match.group(1)`$1${VISUAL}}$0
 endsnippet
 
+snippet adjstbx
+\begin{adjustbox}{width=${1:insert fraction}\textwidth}
+$2${VISUAL}
+\end{adjustbox}
+endsnippet
+
 snippet prmbl "preamble"
 \documentclass[$1]{$2}
 ${3: HINT: eg \input{path/to/input.tex}, or \addbibresource, or \usepackage[disable]{todonotes}}
@@ -277,22 +221,3 @@ $0
 
 \end{document}
 endsnippet
-
-#context "math()"
-#snippet "\\?(left)([[({|]|\\\w+|\\{)" "lr delims" wr
-#global !p
-#m1, m2 = [match.group(i) for i in (1,2)]
-#if m2=='{': m2='\\{'
-#def mir(s):
-#    mird = {
-#        'left':'right', 'l':'r', '\\langle':'\\rangle',
-#        '[':']', '(':')', '\\{':'\\}', '|':'|'}
-#    try:
-#        return mird[s]
-#    except KeyError:
-#        return re.sub('l', 'r', s)
-#mm1, mm2 = [mir(m) for m in (m1,m2)]
-#\\ snip.rv = m1 + m2 ${1:${VISUAL}} \\ snip.rv = mm1 + mm2
-#endglobal 
-#$0
-#endsnippet

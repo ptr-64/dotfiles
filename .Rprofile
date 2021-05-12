@@ -6,13 +6,12 @@
 }
 
 # options(digits = 5)
-options( #stringsAsFactors = FALSE,
-        warnPartialMatchAttr = TRUE,
-        warnPartialMathDollar = TRUE,
-        tab.width =2
+options(warnPartialMatchAttr = TRUE,
+        warnPartialMatchDollar = TRUE,
+        tab.width =2,
+        browser = "/usr/bin/firefox"
 )
-# options(browser = '/usr/bin/firefox')
-# options(na.action = na.warn)
+
 error_dump <- quote(dump.frames(str(./dump), to.file=TRUE))
 
 if (!interactive())

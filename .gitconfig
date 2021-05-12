@@ -178,7 +178,7 @@
 
 [init]
 
-	defaultBranch = prime
+#   defaultBranch = master
 
 [user]
 	email = 36643666+ptr-64@users.noreply.github.com

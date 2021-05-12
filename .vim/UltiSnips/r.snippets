@@ -3,10 +3,17 @@ snippet ggplt
 		${2:geom_fn}(
 		mapping = aes(${3:maps}), 
 		stat = ${4:stat},
-		position = ${5:position}) +
-		${6:coordinate_fn} + ${7:facet_fn}
+		position = ${5:position}
+		) +
+		ggsave(filename = ${6:fname},
+					 path = ${7:directory}
+		)
 endsnippet 
 
+snippet xtbl "xtable"
+xtable(caption = ${1:Insert caption},
+			 label = ${2:Insert label}
+)
 snippet lbry "recursive library"
 library($1)
 ${0:lbry}
@@ -18,7 +25,7 @@ ${1:function name} <- function(${2:function arguments}){
 }
 endsnippet
 
-snippet floop "for loop"
+snippet frlp "for loop"
 for (${1:condition}){
   $2
 }
