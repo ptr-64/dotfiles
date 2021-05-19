@@ -2,7 +2,7 @@
 
 # Create a new directory and enter it
 function mkdt() {
-	mkdir -p "$(date +"%d-%m-%Y")-$@" && cd "$_";
+	mkdir -p "$(date +%F)-$@" && cd "$_";
 }
 
 # Determine size of a file or total size of a directory
