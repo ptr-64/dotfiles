@@ -15,7 +15,7 @@ snippet "((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*|\ )(\/\/)" "Fraction"
 endsnippet
 
 snippet "" "latex quotes"
-\`\`$1''
+\\blockcquote[${1:p-num}]{${2:citekey}}{${3:text}}
 endsnippet
 
 context "math()"
@@ -34,19 +34,19 @@ snippet '([A-Za-z])(II|JJ|KK|LL|MM|NN|TT)' "xn" rwA
 endsnippet
 
 context "math()"
-snippet '(?<!\\|[a-z])(alpha|beta|gamma|theta|zeta|tau|chi|psi|omega|sigma|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda|xi|eta|pi)' "greek" rw
+snippet '(?<!\\|[a-z])(alpha|beta|gamma|theta|zeta|tau|chi|psi|omega|sigma|nu|mu|epsilon|delta|rho|phi|zeta|iota|kappa|lambda|xi|eta|pi)' "greek" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(ln|infty|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|R|C|lim|sim|ge|le)' "ln" wr
+snippet '(?<!\\|[a-z])(ln|infty|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|lim|sim|ge|le|exists)' "ln" wrA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 200
 context "math()"
-snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|star|perp|indp|equiv)' "ln2" rwA
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|arcsin|arccos|arctan|arccot|arcsc|star|perp|indp|equiv|max|min|cdot|contra)' "ln2" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -208,7 +208,20 @@ $2${VISUAL}
 \end{adjustbox}
 endsnippet
 
-snippet prmbl "preamble"
+context "math()"
+snippet cases "cases environment" b
+\begin{cases}
+${1}${VISUAL}
+\end{cases}
+endsnippet
+
+snippet dfn "Definition env" b
+\begin{definition}[${1:Define Term}]
+${2:Definition...}${VISUAL}
+\end{definition}
+endsnippet
+
+snippet prmbl "preamble" b
 \documentclass[$1]{$2}
 ${3: HINT: eg \input{path/to/input.tex}, or \addbibresource, or \usepackage[disable]{todonotes}}
 \title{$4}

@@ -1,0 +1,52 @@
+% Now for some packages for text input
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{csquotes}
+\usepackage{graphicx}
+\usepackage{xurl}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage[]{microtype} 
+\usepackage[style=authoryear]{biblatex} 
+
+% and some packages for math
+\usepackage{siunitx}
+\sisetup{locale = US}
+
+\usepackage{mathtools, amsmath, amsfonts, amsthm, amssymb, bbm}
+
+%finally some miscellaneous packages
+\setlength {\marginparwidth}{2cm}
+\usepackage[]{todonotes}
+\presetkeys{todonotes}{inline}{}
+\setuptodonotes{size=\tiny}
+% Give the paragraphs some room to breathe
+\usepackage{parskip}
+
+% Import svg files for rendering plots
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+% for including images
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
+}
+
+% add a few macros 
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\plim}{\mathit{p}-lim}
+% add fancy contradition symbol
+\usepackage{stmaryrd} % for \lightning
+\newcommand\contra{\scalebox{1.5}{$\lightning$}}
+
+% a few easy shortcuts
+\newcommand\N{\ensuremath{\mathbb{N}}}
+\newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\Z{\ensuremath{\mathbb{Z}}}
+\renewcommand\O{\ensuremath{\emptyset}}
+\newcommand\Q{\ensuremath{\mathbb{Q}}}
+\newcommand\C{\ensuremath{\mathbb{C}}}

@@ -181,6 +181,9 @@ call plug#end()
 " Change the color scheme to nord
 colorscheme nord
 
+" add Nvim-R support to improve R functionality; maybe someday... TMUX works
+" for now...
+"Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 " python with venv support
 py3 << EOF
 import os
