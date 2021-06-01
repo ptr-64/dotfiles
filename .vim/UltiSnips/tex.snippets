@@ -40,7 +40,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\|[a-z])(ln|infty|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|lim|sim|ge|le|exists)' "ln" wrA
+snippet '(?<!\\|[a-z])(ln|infty|log|exp|because|therefore|forall|iff|ne|succ|succeq|plim|in|lim|sim|ge|le|exists|times)' "ln" wrA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -226,7 +226,6 @@ snippet prmbl "preamble" b
 ${3: HINT: eg \input{path/to/input.tex}, or \addbibresource, or \usepackage[disable]{todonotes}}
 \title{$4}
 \author{$5}
-\date{$6}
 \begin{document}
 \maketitle
 
