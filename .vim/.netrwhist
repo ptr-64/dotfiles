@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =2
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/home/iyer/Documents/UGA/scnd_yr_ppr/.git'
+let g:netrw_dirhist_3='/home/iyer/Documents/UGA/2021_RAship/2021-06-04-ganong2020unemployment-repl'
 let g:netrw_dirhist_2='/home/iyer/Documents/UGA/8420/Assignment1'
 let g:netrw_dirhist_1='/home/iyer/dotfiles/newsboat'

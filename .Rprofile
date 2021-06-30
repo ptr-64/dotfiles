@@ -6,13 +6,23 @@
 }
 
 # options(digits = 5)
-options(warnPartialMatchAttr = TRUE,
+options(prompt = "R~> ",
+        digits = 4,
+        show.signif.stars = FALSE,
+        warnPartialMatchAttr = TRUE,
         warnPartialMatchDollar = TRUE,
         tab.width =2,
         browser = "/usr/bin/firefox"
 )
 
-error_dump <- quote(dump.frames(str(./dump), to.file=TRUE))
+local({
+        n <- parallel::detectCores()
+        options(Ncps = n)
+        options(mc.cores = n)
+}
+)
+error_dump <- quote(dump.frames("${R_HOME_USER}/testdump", TRUE)
+)
 
 if (!interactive())
     options(error = function(){
@@ -26,9 +36,17 @@ local({
   r <- getOption("repos")
   r["CRAN"] <- "https://cloud.r-project.org/"
   options(repos = r)
+  rm(r)
 })
 
 rfrsh <- function() {
   assign('.Last',  function() {system('R')}, envir = globalenv())
   quit(save = 'no')
 }
+
+setHook(packageEvent("grDevices", "onLoad"),
+        function(...) grDevices::X11.options(width=8, height=8, 
+                                             xpos=0, pointsize=10, 
+                                             #type="nbcairo"))  # Cairo device
+                                             #type="cairo"))    # other Cairo dev
+                                             type="xlib"))      # old default

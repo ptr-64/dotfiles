@@ -11,3 +11,8 @@
 *run.xml
 *.nav
 *.out
+*.csv*
+*.xml
+*.dta*
+*.dat
+*.sql

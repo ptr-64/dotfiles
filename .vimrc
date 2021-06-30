@@ -101,7 +101,7 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
-" add spell check
+" add spell check and toggle highlighting
 noremap <F5> :setlocal spell!<cr>
 " map ; -> : and : -> ;, esc to jk, and add a few autocommands
 noremap ; :
@@ -129,6 +129,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" Quickly change current directory of local buffer
+command CDC lcd %:p:h
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -159,8 +161,8 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
 " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " add support for pandoc and pandoc-syntax
 Plug 'vim-pandoc/vim-pandoc'  | Plug 'vim-pandoc/vim-pandoc-syntax'

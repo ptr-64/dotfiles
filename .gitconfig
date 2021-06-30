@@ -186,3 +186,5 @@
 	signinkey = FD3F29DF
 [gpg]
 	program = gpg
+[credential]
+	helper = cache
