@@ -14,7 +14,8 @@ options(prompt = "R~> ",
         tab.width =2,
         browser = "/usr/bin/firefox",
         stringsAsFactor = FALSE,
-	max.print = 199
+	max.print = 199,
+	tigris_use_cache = TRUE
 )
 
 local({

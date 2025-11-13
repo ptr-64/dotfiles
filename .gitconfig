@@ -178,6 +178,7 @@
 	insteadOf = "gist:"
 
 [init]
+	defaultBranch = master
 
 #   defaultBranch = master
 

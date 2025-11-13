@@ -58,19 +58,19 @@ set nocompatible
 " clears highlights when I hit leader-esc.
 :set hls is ic
 " Use the statusline
-set laststatus=2
-set statusline=%t       "tail of the filename
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-" set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-"set statusline+=%r      "read only flag
-set statusline+=%y      "filetype
-set statusline+=%=      "left/right separator
-set statusline+=%c,     "cursor column
-set statusline+=%l\ of\ %L   "cursor line/total lines
-set statusline+=\ %P    "percent through file
-set scrolloff=3
+"set laststatus=2
+"set statusline=%t       "tail of the filename
+"set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+"set statusline+=%{&ff}] "file format
+"" set statusline+=%h      "help file flag
+"set statusline+=%m      "modified flag
+""set statusline+=%r      "read only flag
+"set statusline+=%y      "filetype
+"set statusline+=%=      "left/right separator
+"set statusline+=%c,     "cursor column
+"set statusline+=%l\ of\ %L   "cursor line/total lines
+"set statusline+=\ %P    "percent through file
+"set scrolloff=3
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -107,6 +107,7 @@ noremap <F5> :setlocal spell!<cr>
 noremap ; :
 noremap : ;
 inoremap jk <esc>
+inoremap <C-x> <Del>
 "inoremap <esc> <nop>
 "inoremap OD <left>
 "inoremap OC <right>
@@ -199,10 +200,21 @@ Plug 'JuliaEditorSupport/julia-vim'
 
 " Add linting support
 Plug 'dense-analysis/ale'
+let g:ale_fixers = {'r': ['lintr']}
 
 " Plug trasnpose
 Plug 'https://github.com/salsifis/vim-transpose'
 
+" Work with csv files
+Plug 'chrisbra/csv.vim'
+
+" use vim-slime to push code to the right
+Plug 'jpalardy/vim-slime' 
+let g:slime_target = "tmux"
+
+" use a cool status bar
+Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
 " Initialize plugin system
 call plug#end()
 

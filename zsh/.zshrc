@@ -108,3 +108,6 @@ source $ZSH/oh-my-zsh.sh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export VISUAL="$(brew --prefix)/bin/vim"
+export EDITOR="$VISUAL"

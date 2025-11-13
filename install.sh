@@ -1,23 +1,43 @@
-#!/usr/bin/env bash
-# peter's bash installer
-# Fetch the latest version of this file: 
-https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-social/hosts
-# Now symlink everythin
-#ln -sf /Users/"$USER"/dotfiles/bash/.aliases /Users/"$USER"/.aliases
-#ln -sf /Users/"$USER"/dotfiles/bash/.bash_profile /Users/"$USER"/.bash_profile
-#ln -sf /Users/"$USER"/dotfiles/bash/.bash_prompt /Users/"$USER"/.bash_prompt
-#ln -sf /Users/"$USER"/dotfiles/bash/.bashrc /Users/"$USER"/.bashrc
-#ln -sf /Users/"$USER"/dotfiles/bash/.exports /Users/"$USER"/.exports
-#ln -sf /Users/"$USER"/dotfiles/bash/.functions /Users/"$USER"/.functions
+#!/usr/bin/env zsh
+set -e
+
+OS=$(uname -s)
+DOTFILES="$HOME/dotfiles"
+
+echo "[*] Detected OS: $OS"
+
+case "$OS" in
+  Darwin)
+    zsh "$DOTFILES/setup/mac.sh"
+    ;;
+  Linux)
+    bash "$DOTFILES/setup/server.sh"
+    ;;
+  *)
+    echo "Unsupported OS: $OS"
+    exit 1
+    ;;
+esac
+
+# Common setup (OMZ, symlinks, etc.)
+zsh "$DOTFILES/setup/common.sh"
+
+##!/usr/bin/env zsh
+#
+## install omz
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+## install brew
+#sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+## now source the brew.sh file
+## peter's bash installer
+## Now symlink everythin
 #ln -sf /Users/"$USER"/dotfiles/.gitconfig /Users/"$USER"/.gitconfig
 #ln -sf /Users/"$USER"/dotfiles/.gitignore /Users/"$USER"/.gitignore
-#ln -sf /Users/"$USER"/dotfiles/bash/.inputrc /Users/"$USER"/.inputrc
 #ln -sf /Users/"$USER"/dotfiles/.Rprofile /Users/"$USER"/.Rprofile
 #ln -sf /Users/"$USER"/dotfiles/.tmux.conf /Users/"$USER"/.tmux.conf
 #ln -sf /Users/"$USER"/dotfiles/.vimrc /Users/"$USER"/.vimrc
 #ln -sf /Users/"$USER"/dotfiles/.vim /Users/"$USER"/.vim
-#ln -sf /Users/"$USER"/dotfiles/.profile /Users/"$USER"/.profile
-
-# run vim once to allow the plugins to get installed.
-
-
+#
+## run vim once to allow the plugins to get installed.
+#
+#
