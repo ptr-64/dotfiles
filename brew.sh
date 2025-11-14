@@ -38,6 +38,7 @@ brew install --cask netnewswire
 brew install --cask rectangle
 brew install --cask signal
 brew install --cask skim
+brew install --cask iterm2
 brew install --cask thunderbird
 brew install --cask whatsapp
 
