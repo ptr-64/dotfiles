@@ -14,7 +14,7 @@ brew install wget gnupg pyenv r vim borgbackup openconnect git
 brew cleanup
 
 echo "[*] Installing casks..."
-brew install --cask anki firefox inkscape mactex-no-gui netnewswire rectangle signal skim thunderbird whatsapp || true
+brew install --cask anki firefox inkscape iterm2 mactex-no-gui netnewswire rectangle signal skim thunderbird whatsapp || true
 
 echo "[*] Configuring shell..."
 echo 'export PATH="$(brew --prefix)/bin:$PATH"' >> ~/.zprofile
